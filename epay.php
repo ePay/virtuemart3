@@ -387,7 +387,7 @@ class plgVMPaymentEpay extends vmPSPlugin
 		return $this->onCheckAutomaticSelected($cart, $cart_prices, $paymentCounter);
 	}
 	
-	protected function plgVmOnShowOrderFEPayment($virtuemart_order_id, $virtuemart_paymentmethod_id,  & $payment_name)
+	function plgVmOnShowOrderFEPayment($virtuemart_order_id, $virtuemart_paymentmethod_id,  & $payment_name)
 	{
 		$this->onShowOrderFE($virtuemart_order_id, $virtuemart_paymentmethod_id, $payment_name);
 	}
