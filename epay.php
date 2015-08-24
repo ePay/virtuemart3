@@ -38,13 +38,10 @@ class plgVMPaymentEpay extends vmPSPlugin
 	
 	function _getPaymentResponseHtml($epayData, $payment_name)
 	{
-		$html = '<table>' . "\n";
-		$html .= $this->getHtmlRow('EPAY_PAYMENT_NAME', $payment_name);
-		$html .= $this->getHtmlRow('EPAY_TRANSACTION_ID', $epayData["txnid"]);
-		$html .= $this->getHtmlRow('EPAY_ORDER_NUMBER', $epayData["orderid"]);
-		
-		$html .= '</table>' . "\n";
-		
+		$html = $this->renderByLayout('post_payment', array("EPAY_PAYMENT_NAME" => $payment_name,
+													"EPAY_TRANSACTION_ID" =>$epayData["txnid"],
+													"EPAY_ORDER_NUMBER" =>$epayData["orderid"],
+											));		
 		return $html;
 	}
 	
@@ -390,7 +387,7 @@ class plgVMPaymentEpay extends vmPSPlugin
 		return $this->onCheckAutomaticSelected($cart, $cart_prices, $paymentCounter);
 	}
 	
-	protected function plgVmOnShowOrderFEPayment($virtuemart_order_id, $virtuemart_paymentmethod_id,  & $payment_name)
+	function plgVmOnShowOrderFEPayment($virtuemart_order_id, $virtuemart_paymentmethod_id,  & $payment_name)
 	{
 		$this->onShowOrderFE($virtuemart_order_id, $virtuemart_paymentmethod_id, $payment_name);
 	}

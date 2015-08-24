@@ -16,6 +16,7 @@
   </languages>
   <files>
 	  <filename plugin="epay">epay.php</filename>
+	  <folder>epay</folder>
   </files>
   <vmconfig>
     <fields name="params">
